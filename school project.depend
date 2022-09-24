@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1664015851 source:c:\users\joe\desktop\school project\main.c
+	<stdio.h>
+	<stdlib.h>
+	"student.h"
+
+1664015653 source:c:\users\joe\desktop\school project\student.c
+	"student.h"
+	<windows.h>
+	"string.h"
+	<string.h>
+
+1663449887 c:\users\joe\desktop\school project\student.h
+
+1663246851 source:c:\users\joe\desktop\school project\string.c
+	"string.h"
+
+1663246838 c:\users\joe\desktop\school project\string.h
+
