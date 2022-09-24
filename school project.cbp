@@ -37,7 +37,6 @@
 		<Unit filename="string.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="string.h" />
 		<Unit filename="student.c">
 			<Option compilerVar="CC" />
 		</Unit>

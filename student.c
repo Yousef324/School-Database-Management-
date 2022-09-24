@@ -1,6 +1,6 @@
 #include "student.h"
 #include <windows.h>
-#include "string.h"
+
 
 
 

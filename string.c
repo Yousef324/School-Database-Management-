@@ -1,4 +1,6 @@
-#include "string.h"
+#define FIRSTBIGGER 1
+#define SECONDBIGGER -1
+#define EQUAL 0
 
 void print_array_char(char *str)
 {
