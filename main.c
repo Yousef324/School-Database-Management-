@@ -25,13 +25,9 @@ char phonenumber[12];
 int main()
 {
 
-
-
     list_t *l = list_CreateList();
 
     WelcomeMessage();
-
-
 
 
     while(input != 5)
@@ -282,6 +278,12 @@ int main()
                     printf("\n\t\t\tWrong ID Student Not Found !\n");
                     setColor(15);
                 }
+                else
+                {
+                    setColor(2);
+                    printf("\n\t\t\t The Student is Deleted successfully !\n");
+                    setColor(15);
+                }
             }
             else if(input2 == 'n')
             {
@@ -291,6 +293,12 @@ int main()
                 {
                     setColor(4);
                     printf("\n\t\t\tWrong Name Student Not Found !\n");
+                    setColor(15);
+                }
+                else
+                {
+                    setColor(2);
+                    printf("\n\t\t\t The Student is Deleted successfully !\n");
                     setColor(15);
                 }
             }
