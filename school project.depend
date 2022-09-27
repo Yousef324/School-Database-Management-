@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1664015851 source:c:\users\joe\desktop\school project\main.c
+1664296566 source:c:\users\joe\desktop\school project\main.c
 	<stdio.h>
 	<stdlib.h>
 	"student.h"
 
-1664027653 source:c:\users\joe\desktop\school project\student.c
+1664295450 source:c:\users\joe\desktop\school project\student.c
 	"student.h"
 	<windows.h>
 
-1663449887 c:\users\joe\desktop\school project\student.h
+1664295467 c:\users\joe\desktop\school project\student.h
 
 1664027658 source:c:\users\joe\desktop\school project\string.c
 

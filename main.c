@@ -49,9 +49,10 @@ int main()
             system("cls");
             printf("\t\t\t\t\t\t << Inserting Student Info >>\n");
             input2 = 'y';
+
             while(input2 != 'n')
             {
-                printf("\nEnter student name: ");
+                printf("\nEnter Student Fullname: ");
                 scan_string(name,20);
                 printf("Enter student age: ");
                 scanf("%d", &age);
@@ -64,12 +65,22 @@ int main()
                 printf("Enter The phone number of his father: ");
                 scan_string(phonenumber,12);
 
-
-                if(List_Addstudent(l,name,age,grade,address,phonenumber) == OK)
+                if((string_length(name)<3 || string_length(phonenumber)<10) || (address < 15) || (age == '\0'))
                 {
-                    setColor(2);
-                    printf("\n\t\t\t\t\tStudent info is entered\n");
+                    setColor(4);
+                    printf("\n\t\t\t\t\tStudent info is wrong or incompleted !\n");
                     setColor(15);
+                }
+
+                else
+                {
+                    if(List_Addstudent(l,name,age,grade,address,phonenumber) == OK)
+                    {
+                        setColor(2);
+                        printf("\n\t\t\t\t\tStudent info is entered successfully !\n");
+                        setColor(15);
+                    }
+
                 }
 
                 printf("\nDo you want to continue (y/n): ");
@@ -124,13 +135,34 @@ int main()
                 {
                     printf("\n\t\t\tEnter the New name: ");
                     scan_string(name,20);
-                    List_EditStudent_Name(l,ID,name);
+
+                    if(string_length(name)<5)
+                    {
+                        setColor(4);
+                        printf("\n\t\t\t\tWrong Name !\n");
+                        setColor(15);
+                    }
+                    else
+                    {
+                        List_EditStudent_Name(l,ID,name);
+                    }
+
                 }
                 else if(input4 == 2)
                 {
                     printf("\n\t\t\tEnter the New age: ");
                     scanf("%d", &age);
-                    List_EditStudent_Age(l,ID,age);
+                    if(age == 0)
+                    {
+                        setColor(4);
+                        printf("\n\t\t\t\tWrong Age !\n");
+                        setColor(15);
+                    }
+                    else
+                    {
+                        List_EditStudent_Age(l,ID,age);
+                    }
+
                 }
                 else if(input4 == 3)
                 {
@@ -142,21 +174,37 @@ int main()
                 {
                     printf("\n\t\t\tEnter the New Address: ");
                     scan_string(address,100);
-                    List_EditStudent_Address(l,ID,address);
 
+                    if(string_length(address)<20)
+                    {
+                        setColor(4);
+                        printf("\n\t\t\t\tWrong Address !\n");
+                        setColor(15);
+                    }
+                    else
+                    {
+                        List_EditStudent_Address(l,ID,address);
+                    }
                 }
 
                 else if(input4 == 5)
                 {
                     printf("\n\t\t\tEnter the New PhoneNumber: ");
                     scan_string(phonenumber,12);
-                    List_EditStudent_PhoneNumber(l,ID,phonenumber);
-
+                    if(string_length(phonenumber)<10)
+                    {
+                        setColor(4);
+                        printf("\n\t\t\t\tWrong PhoneNumber !\n");
+                        setColor(15);
+                    }
+                    else
+                    {
+                        List_EditStudent_PhoneNumber(l,ID,phonenumber);
+                    }
                 }
                 else
                 {
                     system("cls");
-                    break;
                 }
             }
             break;
@@ -172,6 +220,7 @@ int main()
                 setColor(15);
             }
             break;
+
 
 
 
@@ -196,6 +245,7 @@ int main()
             }
 
             break;
+
 
 
         case 5:

@@ -1,6 +1,5 @@
 
 
-
 typedef struct student
 {
     struct student *next;
@@ -21,6 +20,8 @@ typedef struct list
 
 } list_t;
 
+
+
 typedef enum
 {
     OK,
@@ -33,6 +34,7 @@ typedef enum
 
 
 void setColor(int ForgC);
+void SetBackgroundColor(int BackC);
 void WelcomeMessage(void);
 void DisplayMenu(void);
 
