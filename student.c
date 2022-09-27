@@ -61,11 +61,10 @@ void DisplayMenu(void)
     printf("\t     <<<  Main Menu  >>>\t   |\n");
     printf("\t\t\t\t\t  |\t\t\t\t\t   |\n");
     printf("\t\t\t\t\t  |           1. Add Student\t\t   |\n");
-    printf("\t\t\t\t\t  |           2. Edit Student\t\t   |\n");
+    printf("\t\t\t\t\t  |           2. Show Student Details\t   |\n");
     printf("\t\t\t\t\t  |           3. Show All Students\t   |\n");
-    printf("\t\t\t\t\t  |           4. Show Student Details\t   |\n");
-    printf("\t\t\t\t\t  |           5. Remove Student\t\t   |\n");
-    printf("\t\t\t\t\t  |           6. To Exit \t\t   |\n");
+    printf("\t\t\t\t\t  |           4. Remove Student\t\t   |\n");
+    printf("\t\t\t\t\t  |           5. To Exit \t\t   |\n");
     printf("\t\t\t\t\t  =========================================\n\n");
     setColor(15);
 }
@@ -228,26 +227,6 @@ student_status_t List_RemoveStudentByName(list_t *list, char *studentname)
 
 
 
-student_status_t List_EditStudent_ID(list_t *list, int OldID, int NewID)
-{
-    std_t *current = list->head;
-
-    if(list == 0)
-    {
-        return EMPTY_LIST;
-    }
-
-    while(current!= 0)
-    {
-        if(current->ID == OldID)
-        {
-            current->ID = NewID;
-            return OK;
-        }
-        current = current->next;
-    }
-    return NOT_FOUND;
-}
 
 
 
@@ -404,7 +383,7 @@ student_status_t List_PrintAllStudents(list_t *list)
 
 
 
-student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName)
+student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName, int *RetID)
 {
     std_t *current = list->head;
 
@@ -416,6 +395,7 @@ student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName)
         printf("\t\t\t\t\t\tStudent Grade:\t\t\t%c\n",current->grade);
         printf("\t\t\t\t\t\tStudent Address:\t\t%s\n",current->address);
         printf("\t\t\t\t\t\tFather PhoneNumber:\t\t%s\n",current->phoneNumber);
+        *RetID = current->ID;
         return OK;
     }
 
@@ -431,6 +411,7 @@ student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName)
                     printf("\t\t\t\t\t\tStudent Grade:\t\t\t%c\n",current->grade);
                     printf("\t\t\t\t\t\tStudent Address:\t\t%s\n",current->address);
                     printf("\t\t\t\t\t\tFather PhoneNumber:\t\t%s\n",current->phoneNumber);
+                    *RetID = current->ID;
                     return OK;
 
             }

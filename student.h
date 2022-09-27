@@ -52,13 +52,13 @@ student_status_t List_RemoveStudentByID(list_t *list, int serachID);
 student_status_t List_RemoveStudentByName(list_t *list, char *studentname);
 
 
-student_status_t List_EditStudent_ID(list_t *list, int OldID, int NewID);
+
 student_status_t List_EditStudent_Name(list_t *list, int OldID, char *NewName);
 student_status_t List_EditStudent_Age(list_t *list, int OldID, int NewAge);
 student_status_t List_EditStudent_Grade(list_t *list, int OldID, char NewGrade);
 
 
 
-student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName);
+student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName, int *RetID);
 
 student_status_t  PrintDetailsStudentByID(list_t *list, int searchID);

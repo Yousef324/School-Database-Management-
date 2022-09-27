@@ -34,7 +34,7 @@ int main()
 
 
 
-    while(input != 6)
+    while(input != 5)
     {
         age = 0;
         grade = 0;
@@ -96,26 +96,45 @@ int main()
 
 
 
-
-
-
         case 2:
-
             system("cls");
-            printf("\t\t\t\t\t\t <<  Editing Student Info  >>\n");
+            printf("\t\t\t\t\t\t <<  Welcome to Student Details Window  >>\n");
+            printf("Do you want to search by ID or by Name (enter i or n): ");
+            input2 = 0;
+            scanf(" %c",&input2);
 
-            printf("Enter Student ID: ");
-            scanf("%d", &ID);
-
-            if(PrintDetailsStudentByID(l,ID) == NOT_FOUND)
+            if(input2 == 'i')
             {
-                setColor(4);
-                printf("\n\t\t\t\t\t Student Not Found !\n");
-                setColor(15);
-
+                printf("Enter student ID: ");
+                scanf("%d", &ID);
+                if(PrintDetailsStudentByID(l,ID) == NOT_FOUND)
+                {
+                    setColor(4);
+                    printf("\n\t\t\tStudent Not Found !\n");
+                    setColor(15);
+                    break;
+                }
             }
 
-            else
+            else if(input2 == 'n')
+            {
+                printf("Enter student Name: ");
+                scan_string(name,20);
+                if (PrintDetailsStudentByName(l,name,&ID) == NOT_FOUND)
+                {
+                    setColor(4);
+                    printf("\n\t\t\tStudent Not Found !\n");
+                    setColor(15);
+                    break;
+                }
+            }
+
+
+            printf("\n\t\tDo you want to edit the student info ? (y/n): ");
+            input2 = 0;
+            scanf(" %c",&input2);
+
+            if(input2 == 'y')
             {
                 printf("--------------------------------------------------------------------------------------------------------------------\n");
 
@@ -124,90 +143,111 @@ int main()
                 printf("\t\t\tTo edit Grade enter:\t\t3\n");
                 printf("\t\t\tTo edit Address enter:\t\t4\n");
                 printf("\t\t\tTo edit PhoneNumber enter:\t5\n");
-                printf("\t\t\tTo Exit enter:\t\t\tany number\n");
+                printf("\t\t\tTo Finish enter:\t\t6\n");
 
 
-                printf("\n\t\tChoose your option >>>> ");
-
-                scanf("%d", &input4);
-
-                if(input4 == 1)
+                while(input4 != 6)
                 {
-                    printf("\n\t\t\tEnter the New name: ");
-                    scan_string(name,20);
+                    printf("\n\t\tChoose your option >>>> ");
 
-                    if(string_length(name)<5)
+                    scanf("%d", &input4);
+                    if(input4 == 1)
                     {
-                        setColor(4);
-                        printf("\n\t\t\t\tWrong Name !\n");
+                        printf("\n\t\t\tEnter the New name: ");
+                        scan_string(name,20);
+
+                        if(string_length(name)<5)
+                        {
+                            setColor(4);
+                            printf("\n\t\t\t\tWrong Name !\n");
+                            setColor(15);
+                        }
+                        else
+                        {
+                            setColor(2);
+                            List_EditStudent_Name(l,ID,name);
+                            printf("\n\t\t\t The name is changed successfully !\n");
+                            setColor(15);
+                        }
+
+                    }
+
+                    else if(input4 == 2)
+                    {
+                        printf("\n\t\t\tEnter the New age: ");
+                        scanf("%d", &age);
+                        if(age == 0)
+                        {
+                            setColor(4);
+                            printf("\n\t\t\t\tWrong Age !\n");
+                            setColor(15);
+                        }
+                        else
+                        {
+                            setColor(2);
+                            List_EditStudent_Age(l,ID,age);
+                            printf("\n\t\t\t The Age is changed successfully !\n");
+                            setColor(15);
+                        }
+
+                    }
+
+                    else if(input4 == 3)
+                    {
+                        printf("\n\t\t\tEnter the New Grade: ");
+                        scanf(" %c", &grade);
+                        setColor(2);
+                        List_EditStudent_Grade(l,ID,grade);
+                        printf("\n\t\t\t The Age is changed successfully !\n");
                         setColor(15);
                     }
-                    else
+
+                    else if(input4 == 4)
                     {
-                        List_EditStudent_Name(l,ID,name);
+                        printf("\n\t\t\tEnter the New Address: ");
+                        scan_string(address,100);
+
+                        if(string_length(address)<20)
+                        {
+                            setColor(4);
+                            printf("\n\t\t\t\tWrong Address !\n");
+                            setColor(15);
+                        }
+                        else
+                        {
+                            setColor(2);
+                            List_EditStudent_Address(l,ID,address);
+                            printf("\n\t\t\t The Address is changed successfully !\n");
+                            setColor(15);
+                        }
                     }
 
-                }
-                else if(input4 == 2)
-                {
-                    printf("\n\t\t\tEnter the New age: ");
-                    scanf("%d", &age);
-                    if(age == 0)
+                    else if(input4 == 5)
                     {
-                        setColor(4);
-                        printf("\n\t\t\t\tWrong Age !\n");
-                        setColor(15);
-                    }
-                    else
-                    {
-                        List_EditStudent_Age(l,ID,age);
+                        printf("\n\t\t\tEnter the New PhoneNumber: ");
+                        scan_string(phonenumber,12);
+                        if(string_length(phonenumber)<10)
+                        {
+                            setColor(4);
+                            printf("\n\t\t\t\tWrong PhoneNumber !\n");
+                            setColor(15);
+                        }
+                        else
+                        {
+                            setColor(2);
+                            List_EditStudent_PhoneNumber(l,ID,phonenumber);
+                            printf("\n\t\t\t The PhoneNumber is changed successfully !\n");
+                            setColor(15);
+                        }
                     }
 
-                }
-                else if(input4 == 3)
-                {
-                    printf("\n\t\t\tEnter the New Grade: ");
-                    scanf(" %c", &grade);
-                    List_EditStudent_Grade(l,ID,grade);
-                }
-                else if(input4 == 4)
-                {
-                    printf("\n\t\t\tEnter the New Address: ");
-                    scan_string(address,100);
-
-                    if(string_length(address)<20)
-                    {
-                        setColor(4);
-                        printf("\n\t\t\t\tWrong Address !\n");
-                        setColor(15);
-                    }
-                    else
-                    {
-                        List_EditStudent_Address(l,ID,address);
-                    }
-                }
-
-                else if(input4 == 5)
-                {
-                    printf("\n\t\t\tEnter the New PhoneNumber: ");
-                    scan_string(phonenumber,12);
-                    if(string_length(phonenumber)<10)
-                    {
-                        setColor(4);
-                        printf("\n\t\t\t\tWrong PhoneNumber !\n");
-                        setColor(15);
-                    }
-                    else
-                    {
-                        List_EditStudent_PhoneNumber(l,ID,phonenumber);
-                    }
-                }
-                else
-                {
-                    system("cls");
                 }
             }
+
+            system("cls");
             break;
+
+
 
 
 
@@ -224,31 +264,9 @@ int main()
 
 
 
+
+
         case 4:
-            system("cls");
-            printf("\t\t\t\t\t\t <<  Student Info  >>\n");
-            printf("Do you want to search by ID or by Name (enter i or n): ");
-            input2 = 0;
-            scanf(" %c",&input2);
-
-            if(input2 == 'i')
-            {
-                printf("Enter student ID: ");
-                scanf("%d", &ID);
-                PrintDetailsStudentByID(l,ID);
-            }
-            else if(input2 == 'n')
-            {
-                printf("Enter student Name: ");
-                scan_string(name,20);
-                PrintDetailsStudentByName(l,name);
-            }
-
-            break;
-
-
-
-        case 5:
             system("cls");
             printf("\t\t\t\t\t\t <<  Student Info  >>\n");
             printf("Do you want to delete by ID or by Name (enter i or n): ");
@@ -271,14 +289,6 @@ int main()
 
         }
     }
-
-
-
-
-
-
-
-
 
 
     return 0;
