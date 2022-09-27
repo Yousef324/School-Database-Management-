@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1664298038 source:c:\users\joe\desktop\school project\main.c
+1664301544 source:c:\users\joe\desktop\school project\main.c
 	<stdio.h>
 	<stdlib.h>
 	"student.h"
 
-1664299591 source:c:\users\joe\desktop\school project\student.c
+1664301693 source:c:\users\joe\desktop\school project\student.c
 	"student.h"
 	<windows.h>
 

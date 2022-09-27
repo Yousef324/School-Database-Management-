@@ -28,10 +28,10 @@ void setColor(int ForgC)
 
 void SetBackgroundColor(int BackC)
 {
-     CONSOLE_SCREEN_BUFFER_INFO csbi;
-     WORD wColor = ((BackC & 0x0F) << 4) + (csbi.wAttributes & 0x0F);
-     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), wColor);
-     return;
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    WORD wColor = ((BackC & 0x0F) << 4) + (csbi.wAttributes & 0x0F);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), wColor);
+    return;
 }
 
 
@@ -387,6 +387,11 @@ student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName, int 
 {
     std_t *current = list->head;
 
+    if(current == 0)
+    {
+        return NOT_FOUND;
+    }
+
     if(string_compare(current->Name,SearchName) == 1)
     {
         printf("\n\n\t\t\t\t\t\tStudent ID:\t\t\t%d\n",current->ID);
@@ -405,14 +410,14 @@ student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName, int 
         {
             if(string_compare(current->Name,SearchName) == 1)
             {
-                    printf("\n\n\t\t\t\t\t\tStudent ID:\t\t\t%d\n",current->ID);
-                    printf("\t\t\t\t\t\tStudent Name:\t\t\t%s\n",current->Name);
-                    printf("\t\t\t\t\t\tStudent Age:\t\t\t%d\n",current->Age);
-                    printf("\t\t\t\t\t\tStudent Grade:\t\t\t%c\n",current->grade);
-                    printf("\t\t\t\t\t\tStudent Address:\t\t%s\n",current->address);
-                    printf("\t\t\t\t\t\tFather PhoneNumber:\t\t%s\n",current->phoneNumber);
-                    *RetID = current->ID;
-                    return OK;
+                printf("\n\n\t\t\t\t\t\tStudent ID:\t\t\t%d\n",current->ID);
+                printf("\t\t\t\t\t\tStudent Name:\t\t\t%s\n",current->Name);
+                printf("\t\t\t\t\t\tStudent Age:\t\t\t%d\n",current->Age);
+                printf("\t\t\t\t\t\tStudent Grade:\t\t\t%c\n",current->grade);
+                printf("\t\t\t\t\t\tStudent Address:\t\t%s\n",current->address);
+                printf("\t\t\t\t\t\tFather PhoneNumber:\t\t%s\n",current->phoneNumber);
+                *RetID = current->ID;
+                return OK;
 
             }
             current = current->next;
@@ -420,7 +425,7 @@ student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName, int 
 
     }
 
-     return NOT_FOUND;
+    return NOT_FOUND;
 
 }
 
@@ -430,6 +435,11 @@ student_status_t  PrintDetailsStudentByName(list_t *list, char *SearchName, int 
 student_status_t  PrintDetailsStudentByID(list_t *list, int searchID)
 {
     std_t *current = list->head;
+
+    if(current == 0)
+    {
+        return NOT_FOUND;
+    }
 
     if(current->ID == searchID)
     {
@@ -449,14 +459,14 @@ student_status_t  PrintDetailsStudentByID(list_t *list, int searchID)
             if(current->ID == searchID)
             {
 
-                    printf("\n\n\t\t\t\t\t\tStudent ID:\t\t\t%d\n",current->ID);
-                    printf("\t\t\t\t\t\tStudent Name:\t\t\t%s\n",current->Name);
-                    printf("\t\t\t\t\t\tStudent Age:\t\t\t%d\n",current->Age);
-                    printf("\t\t\t\t\t\tStudent Grade:\t\t\t%c\n",current->grade);
-                    printf("\t\t\t\t\t\tStudent Address:\t\t%s\n",current->address);
-                    printf("\t\t\t\t\t\tFather PhoneNumber:\t\t%s\n",current->phoneNumber);
+                printf("\n\n\t\t\t\t\t\tStudent ID:\t\t\t%d\n",current->ID);
+                printf("\t\t\t\t\t\tStudent Name:\t\t\t%s\n",current->Name);
+                printf("\t\t\t\t\t\tStudent Age:\t\t\t%d\n",current->Age);
+                printf("\t\t\t\t\t\tStudent Grade:\t\t\t%c\n",current->grade);
+                printf("\t\t\t\t\t\tStudent Address:\t\t%s\n",current->address);
+                printf("\t\t\t\t\t\tFather PhoneNumber:\t\t%s\n",current->phoneNumber);
 
-                    return OK;
+                return OK;
 
             }
             current = current->next;

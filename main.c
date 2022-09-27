@@ -3,34 +3,34 @@
 #include "student.h"
 
 
+/* For Interfacing */
+int input = 0;
+char input2;
+int input3 = 0;
+
+
+
+
+/* User Requirement */
+int ID = 0;
+int age;
+char name [20];
+char grade;
+char address[100];
+char phonenumber[12];
+
+
+
+
 int main()
 {
-
-    int input = 0;
-    char input2;
-    int ID = 0;
-    int input4;
-
-
-
-
-    int age;
-    char name [20];
-    char grade;
-
-
-
-    char address[100];
-    char phonenumber[12];
-
-
-
-
-    WelcomeMessage();
 
 
 
     list_t *l = list_CreateList();
+
+    WelcomeMessage();
+
 
 
 
@@ -47,7 +47,7 @@ int main()
 
         case 1:
             system("cls");
-            printf("\t\t\t\t\t\t << Inserting Student Info >>\n");
+            printf("\t\t\t\t\t\t << Inserting Student Info Window >>\n");
             input2 = 'y';
 
             while(input2 != 'n')
@@ -56,7 +56,7 @@ int main()
                 scan_string(name,20);
                 printf("Enter student age: ");
                 scanf("%d", &age);
-                printf("Enter student grade: ");
+                printf("Enter student grade (0 -> F): ");
                 scanf(" %c", &grade);
 
                 printf("Enter The address of student: ");
@@ -99,7 +99,7 @@ int main()
         case 2:
             system("cls");
             printf("\t\t\t\t\t\t <<  Welcome to Student Details Window  >>\n");
-            printf("Do you want to search by ID or by Name (enter i or n): ");
+            printf("\nDo you want to search by ID or by Name (enter i or n): ");
             input2 = 0;
             scanf(" %c",&input2);
 
@@ -146,12 +146,12 @@ int main()
                 printf("\t\t\tTo Finish enter:\t\t6\n");
 
 
-                while(input4 != 6)
+                while(input3 != 6)
                 {
                     printf("\n\t\tChoose your option >>>> ");
 
-                    scanf("%d", &input4);
-                    if(input4 == 1)
+                    scanf("%d", &input3);
+                    if(input3 == 1)
                     {
                         printf("\n\t\t\tEnter the New name: ");
                         scan_string(name,20);
@@ -172,7 +172,7 @@ int main()
 
                     }
 
-                    else if(input4 == 2)
+                    else if(input3 == 2)
                     {
                         printf("\n\t\t\tEnter the New age: ");
                         scanf("%d", &age);
@@ -192,17 +192,17 @@ int main()
 
                     }
 
-                    else if(input4 == 3)
+                    else if(input3 == 3)
                     {
                         printf("\n\t\t\tEnter the New Grade: ");
                         scanf(" %c", &grade);
                         setColor(2);
                         List_EditStudent_Grade(l,ID,grade);
-                        printf("\n\t\t\t The Age is changed successfully !\n");
+                        printf("\n\t\t\t The Grade is changed successfully !\n");
                         setColor(15);
                     }
 
-                    else if(input4 == 4)
+                    else if(input3 == 4)
                     {
                         printf("\n\t\t\tEnter the New Address: ");
                         scan_string(address,100);
@@ -222,7 +222,7 @@ int main()
                         }
                     }
 
-                    else if(input4 == 5)
+                    else if(input3 == 5)
                     {
                         printf("\n\t\t\tEnter the New PhoneNumber: ");
                         scan_string(phonenumber,12);
@@ -268,7 +268,7 @@ int main()
 
         case 4:
             system("cls");
-            printf("\t\t\t\t\t\t <<  Student Info  >>\n");
+            printf("\t\t\t\t\t\t <<  Deleting Student Window  >>\n");
             printf("Do you want to delete by ID or by Name (enter i or n): ");
             scanf(" %c",&input2);
 
@@ -276,17 +276,26 @@ int main()
             {
                 printf("Enter student ID: ");
                 scanf("%d", &ID);
-                List_RemoveStudentByID(l,ID);
+                if (List_RemoveStudentByID(l,ID) == NOT_FOUND)
+                {
+                    setColor(4);
+                    printf("\n\t\t\tWrong ID Student Not Found !\n");
+                    setColor(15);
+                }
             }
             else if(input2 == 'n')
             {
                 printf("Enter student Name: ");
                 scan_string(name,20);
-                List_RemoveStudentByName(l,name);
+                if (List_RemoveStudentByName(l,name) == NOT_FOUND)
+                {
+                    setColor(4);
+                    printf("\n\t\t\tWrong Name Student Not Found !\n");
+                    setColor(15);
+                }
             }
 
             break;
-
         }
     }
 
