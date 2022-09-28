@@ -1,8 +1,7 @@
-#include "student.h"
+#include <stdio.h>
 #include <windows.h>
-
-
-
+#include "string.h"
+#include "student.h"
 
 
 
@@ -22,15 +21,6 @@ void setColor(int ForgC)
         wColor = (csbi.wAttributes & 0xF0) + (ForgC & 0x0F);
         SetConsoleTextAttribute(hStdOut, wColor);
     }
-    return;
-}
-
-
-void SetBackgroundColor(int BackC)
-{
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    WORD wColor = ((BackC & 0x0F) << 4) + (csbi.wAttributes & 0x0F);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), wColor);
     return;
 }
 
@@ -154,7 +144,7 @@ student_status_t List_RemoveStudentByID(list_t *list, int serachID)
     std_t *temp = 0;
 
 
-    if(list->head == 0)
+    if(current == 0)
     {
         return EMPTY_LIST;
     }
@@ -166,6 +156,7 @@ student_status_t List_RemoveStudentByID(list_t *list, int serachID)
         current->next = temp;
         list->size--;
         free(temp);
+
         return OK;
     }
 
@@ -194,7 +185,7 @@ student_status_t List_RemoveStudentByName(list_t *list, char *studentname)
     std_t *temp = 0;
 
 
-    if(list->head == 0)
+    if(current == 0)
     {
         return EMPTY_LIST;
     }
@@ -323,6 +314,8 @@ student_status_t List_EditStudent_Address(list_t *list, int OldID, char *NewAddr
     }
     return NOT_FOUND;
 }
+
+
 
 
 

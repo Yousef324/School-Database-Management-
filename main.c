@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "student.h"
+#include "string.h"
 
 
 /* For Interfacing */
@@ -61,7 +62,7 @@ int main()
                 printf("Enter The phone number of his father: ");
                 scan_string(phonenumber,12);
 
-                if((string_length(name)<3 || string_length(phonenumber)<10) || (address < 15) || (age == '\0'))
+                if((string_length(name)<3) || (string_length(phonenumber)<10) || (string_length(address) < 10) || (age == '\0'))
                 {
                     setColor(4);
                     printf("\n\t\t\t\t\tStudent info is wrong or incompleted !\n");
@@ -272,10 +273,16 @@ int main()
             {
                 printf("Enter student ID: ");
                 scanf("%d", &ID);
-                if (List_RemoveStudentByID(l,ID) == NOT_FOUND)
+                if (List_RemoveStudentByID(l,ID) == EMPTY_LIST)
                 {
                     setColor(4);
-                    printf("\n\t\t\tWrong ID Student Not Found !\n");
+                    printf("\n\t\t\tSorry Empty LIST !\n");
+                    setColor(15);
+                }
+                else if(List_RemoveStudentByID(l,ID) == NOT_FOUND)
+                {
+                    setColor(4);
+                    printf("\n\t\t\t Student Not Found !\n");
                     setColor(15);
                 }
                 else
@@ -289,10 +296,16 @@ int main()
             {
                 printf("Enter student Name: ");
                 scan_string(name,20);
-                if (List_RemoveStudentByName(l,name) == NOT_FOUND)
+                if (List_RemoveStudentByName(l,name) == EMPTY_LIST)
                 {
                     setColor(4);
-                    printf("\n\t\t\tWrong Name Student Not Found !\n");
+                    printf("\n\t\t\tSorry Empty LIST !\n");
+                    setColor(15);
+                }
+                else if(List_RemoveStudentByName(l,name) == NOT_FOUND)
+                {
+                    setColor(4);
+                    printf("\n\t\t\t Student Not Found !\n");
                     setColor(15);
                 }
                 else
