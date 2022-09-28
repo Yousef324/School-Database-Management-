@@ -124,9 +124,9 @@ int main()
                 }
             }
 
-
             printf("\n\t\tDo you want to edit the student info ? (y/n): ");
             input2 = 0;
+            input3 = 0;
             scanf(" %c",&input2);
 
             if(input2 == 'y')

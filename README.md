@@ -16,7 +16,7 @@ The user can take the following action in this project through the console:
 - Editing the student info
 - Printing the list
 
-![plot](./Pictures/Untitled.png)
+![plot](./SnapShots/MainMenu.png)
 
 ### **How to run the project**
 1. Open CodeBlocks IDE
