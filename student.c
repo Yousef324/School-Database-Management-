@@ -75,7 +75,7 @@ list_t *list_CreateList(void)
 
 
 
-std_t* CreateStudent(char *name, int age, char grade, char * address, char * phoneNumber)
+std_t* CreateStudent(char *name, int age, char * address, char * phoneNumber)
 {
     std_t *NewStudent = malloc(sizeof(std_t));
 
@@ -83,7 +83,7 @@ std_t* CreateStudent(char *name, int age, char grade, char * address, char * pho
 
     NewStudent->ID = ++ID_student;
 
-    NewStudent->grade = grade;
+    NewStudent->grade = 0;
 
     copy_string(name,NewStudent->Name,20);
     copy_string(phoneNumber,NewStudent->phoneNumber,12);
@@ -102,9 +102,9 @@ std_t* CreateStudent(char *name, int age, char grade, char * address, char * pho
 
 
 
-student_status_t  List_Addstudent(list_t *list,char *name, int age, char grade, char *address, char *phoneNumber)
+student_status_t  List_Addstudent(list_t *list,char *name, int age, char *address, char *phoneNumber)
 {
-    std_t * NewNode = CreateStudent(name,age,grade,address,phoneNumber);
+    std_t * NewNode = CreateStudent(name,age,address,phoneNumber);
 
     std_t * current = list->head;
 

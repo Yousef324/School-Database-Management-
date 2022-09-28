@@ -39,7 +39,7 @@ void DisplayMenu(void);
 
 
 list_t *list_CreateList(void);
-student_status_t  List_Addstudent(list_t *list,char *name, int age , char grade, char *address, char *phoneNumber);
+student_status_t  List_Addstudent(list_t *list,char *name, int age, char *address, char *phoneNumber);
 
 /***************************** FOR REMOVING Functions ************************************************/
 

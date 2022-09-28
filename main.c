@@ -53,8 +53,6 @@ int main()
                 scan_string(name,20);
                 printf("Enter student age: ");
                 scanf("%d", &age);
-                printf("Enter student grade (0 -> F): ");
-                scanf(" %c", &grade);
 
                 printf("Enter The address of student: ");
                 scan_string(address,100);
@@ -71,7 +69,7 @@ int main()
 
                 else
                 {
-                    if(List_Addstudent(l,name,age,grade,address,phonenumber) == OK)
+                    if(List_Addstudent(l,name,age,address,phonenumber) == OK)
                     {
                         setColor(2);
                         printf("\n\t\t\t\t\tStudent info is entered successfully !\n");
@@ -204,7 +202,7 @@ int main()
                         printf("\n\t\t\tEnter the New Address: ");
                         scan_string(address,100);
 
-                        if(string_length(address)<20)
+                        if(string_length(address)<10)
                         {
                             setColor(4);
                             printf("\n\t\t\t\tWrong Address !\n");
